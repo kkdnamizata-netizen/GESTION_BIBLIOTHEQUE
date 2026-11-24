@@ -1,14 +1,14 @@
-from database .connexion import Connexion 
+from database.connexion import Connexion
 
 
-class Initialisation :
+class Initialisation:
 
-    def __init__ (self ):
-        self .db =Connexion ()
+    def __init__(self):
+        self.db = Connexion()
 
-    def creer_tables (self ):
+    def creer_tables(self):
 
-        self .db .curseur .execute ("""
+        self.db.curseur.execute("""
             CREATE TABLE IF NOT EXISTS auteurs (
                 id_auteur INTEGER PRIMARY KEY AUTOINCREMENT,
                 nom TEXT NOT NULL,
@@ -16,14 +16,14 @@ class Initialisation :
             )
         """)
 
-        self .db .curseur .execute ("""
+        self.db.curseur.execute("""
             CREATE TABLE IF NOT EXISTS categories (
                 id_categorie INTEGER PRIMARY KEY AUTOINCREMENT,
                 nom TEXT UNIQUE NOT NULL
             )
         """)
 
-        self .db .curseur .execute ("""
+        self.db.curseur.execute("""
             CREATE TABLE IF NOT EXISTS rayons (
                 id_rayon INTEGER PRIMARY KEY AUTOINCREMENT,
                 nom TEXT UNIQUE NOT NULL,
@@ -31,7 +31,7 @@ class Initialisation :
             )
         """)
 
-        self .db .curseur .execute ("""
+        self.db.curseur.execute("""
             CREATE TABLE IF NOT EXISTS livres (
                 id_livre INTEGER PRIMARY KEY AUTOINCREMENT,
                 titre TEXT NOT NULL,
@@ -55,7 +55,7 @@ class Initialisation :
             )
         """)
 
-        self .db .curseur .execute ("""
+        self.db.curseur.execute("""
             CREATE TABLE IF NOT EXISTS lecteurs (
                 id_lecteur INTEGER PRIMARY KEY AUTOINCREMENT,
                 nom TEXT NOT NULL,
@@ -67,7 +67,7 @@ class Initialisation :
             )
         """)
 
-        self .db .curseur .execute ("""
+        self.db.curseur.execute("""
             CREATE TABLE IF NOT EXISTS emprunts (
                 id_emprunt INTEGER PRIMARY KEY AUTOINCREMENT,
                 id_livre INTEGER NOT NULL,
@@ -84,7 +84,7 @@ class Initialisation :
             )
         """)
 
-        self .db .curseur .execute ("""
+        self.db.curseur.execute("""
             CREATE TABLE IF NOT EXISTS retours (
                 id_retour INTEGER PRIMARY KEY AUTOINCREMENT,
                 id_emprunt INTEGER NOT NULL UNIQUE,
@@ -95,7 +95,7 @@ class Initialisation :
             )
         """)
 
-        self .db .connexion .commit ()
+        self.db.connexion.commit()
 
-    def fermer (self ):
-        self .db .fermer ()
+    def fermer(self):
+        self.db.fermer()

@@ -1,1 +1,2 @@
-Pillow>=10.0.0
+# Dépendances du projet GESTION_BIBLIOTHEQUE
+# L'application fonctionne avec la bibliothèque standard Python 3 (sqlite3, datetime, os, sys)

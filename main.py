@@ -1,21 +1,19 @@
-import tkinter as tk 
-
-from database .initialisation import Initialisation 
-from interfaces .accueil import Accueil 
+from database.initialisation import Initialisation
+from console.app import ApplicationConsole
 
 
-def main ():
+def main():
+    bibliotheque = Initialisation()
+    bibliotheque.creer_tables()
+    bibliotheque.fermer()
 
-    bibliotheque =Initialisation ()
-    bibliotheque .creer_tables ()
-    bibliotheque .fermer ()
-
-    fenetre =tk .Tk ()
-
-    application =Accueil (fenetre )
-
-    fenetre .mainloop ()
+    app = ApplicationConsole()
+    try:
+        app.lancer()
+    except KeyboardInterrupt:
+        print("\n\nFermeture de l'application...")
+        app.fermer()
 
 
-if __name__ =="__main__":
-    main ()
+if __name__ == "__main__":
+    main()
